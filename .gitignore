@@ -1,3 +1,7 @@
+# Anything -private.* will be ignored. This will undoubtably come back to bite
+# us.
+*-private.*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

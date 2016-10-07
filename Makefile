@@ -10,6 +10,7 @@ setup: python yaml
 	ln -sf ../../githooks/pre-commit.py .git/hooks/pre-commit
 	ln -sf ../../githooks/commit-msg.sh .git/hooks/commit-msg
 	pip install --upgrade git-lint
+	echo "workon ." > .env
 
 # Python lint setup
 python:
