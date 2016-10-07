@@ -2,7 +2,7 @@
 Write data to google sheets from python
 
 Step 1. Install on pyGooglesheets in sense: 
-pip install git+ssh://git@github.com/unbounce/ub-pyGooglesheets.git@bi-1488-initial-version
+pip install git+ssh://git@github.com/unbounce/ub-pyGooglesheets.git
 
 Optional Step if you want to use in your own dev environment:
 
