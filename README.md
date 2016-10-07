@@ -11,9 +11,8 @@ Write data to google sheets from python
 6. Share Google Sheets with the value of  the `client_email` attribute in the `service_account.json`
 
 Sample Python Script:
-# Write out to spreadsheet
-import pygooglesheets
-
+    # Write out to spreadsheet
+    import pygooglesheets
     data = Snapshot_TotalConversionStats_ForAllTime_AsNow.toPandas()
     credentials = 'data/pyGooglesheets/service_account.json'
     connection = pygooglesheets.Connection(credentials=credentials,
