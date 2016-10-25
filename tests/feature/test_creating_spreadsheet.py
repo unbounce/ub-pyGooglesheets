@@ -1,7 +1,6 @@
 from __future__ import print_function
 import pytest
 import pygooglesheets
-from datetime import datetime, timedelta
 
 from oauth2client.service_account import ServiceAccountCredentials
 from apiclient import discovery
