@@ -37,7 +37,7 @@ let's get a list of files that match the mime type for Google Spreadsheets
 **Step 4:** If there are matching sheets - instantiate a
 `pygooglesheets.Spreadsheet` object from its `id`
 and we're done! Otherwise, create a new `pygooglesheets.Spreadsheet` using the
-`pygooglesheets.Spreadsheet.create` factory
+`pygooglesheets.collection.create` factory
 
 *NOTE: If there are multiple matching sheets you probably don't want to just randomly grab the first... but this is an example so we're ignoring the problem*
 
@@ -46,6 +46,6 @@ and we're done! Otherwise, create a new `pygooglesheets.Spreadsheet` using the
     else:
         connection = pygooglesheets.Connection(credentials='service-account-private.json',
             permissions='readwrite')
-        target_sheet = pygooglesheets.Spreadsheet.create(connection=connection, name='My Spreadsheet')
+        target_sheet = pygooglesheets.collection.create(connection=connection, name='My Spreadsheet')
 
 **Step 5:** Do fun things with your sheet!

@@ -62,7 +62,7 @@ class TestFeatureSpecs:
         count_files_matching_expected_name = len([f for f in starting_files if f['name'] == expected_name])
         assert(count_files_matching_expected_name == 0 )
 
-        spreadsheet = pygooglesheets.Spreadsheet.create(connection=connection, name=expected_name)
+        spreadsheet = pygooglesheets.collection.create(connection=connection, name=expected_name)
         result = list_sheets(credentials)
         count_files_matching_expected_name = len([f for f in result.get('files') if f['name'] == expected_name])
         assert(count_files_matching_expected_name == 1)
