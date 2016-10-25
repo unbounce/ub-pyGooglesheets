@@ -21,7 +21,7 @@ def read_from_sheet(sheet_id, range, credentials):
     return result
 
 
-class TestFeatureSpecs:
+class TestFeatureSpecsWritingToSheet:
 
     # To run this test you need a valid Service Account json credentials file in
     # tests/fixtures/service-account-private.json. The spreadsheet it is writing
