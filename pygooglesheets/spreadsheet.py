@@ -1,10 +1,26 @@
 from apiclient import discovery
 import types
 
-class Spreadsheet:
+class Spreadsheet(object):
 
     def __init__(self, id):
         self.id = id
+
+    @classmethod
+    def create(klass, connection, name, sheets=[], locale='en_US'):
+        service_url = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+        service = discovery.build('sheets', 'v4', http=connection,
+                          discoveryServiceUrl=service_url)
+
+        body = {
+            'properties': {
+                'title': name,
+                'locale': locale
+            },
+            'sheets': [ sheets ]
+        }
+        result = service.spreadsheets().create(body=body).execute()
+        return(klass(result['spreadsheetId']))
 
 
     def update(self, connection, range, data):

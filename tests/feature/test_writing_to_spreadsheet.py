@@ -6,8 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 from apiclient import discovery
 import httplib2
 
-
 def read_from_sheet(sheet_id, range, credentials):
+    __tracebackhide__ = True
     SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         credentials, scopes=SCOPES)
