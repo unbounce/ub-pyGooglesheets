@@ -1,6 +1,6 @@
-import pygooglesheets.collection
-from .connection import pygooglesheets.Connection
-from .spreadsheet import pygooglesheets.Spreadsheet
+import collection
+from .connection import Connection
+from .spreadsheet import Spreadsheet
 
 
 # Example code

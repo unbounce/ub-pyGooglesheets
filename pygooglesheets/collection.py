@@ -1,4 +1,4 @@
-from pygooglesheets.spreadsheet import Spreadsheet
+from .spreadsheet import Spreadsheet
 from apiclient import discovery
 
 
