@@ -25,7 +25,7 @@ def read_from_sheet(sheet_id, range, credentials):
 def sheet(request)
     # get_marker returns a tuple, but we only want the first one so...
     credentials_file = request.node.get_marker('credentials')[0]
-    sheet = pygooglesheets.Spreadsheet.create(
+    sheet = pygooglesheets.collections.create(
         pygooglesheets.Connection(credentials=credentials_file, permissions='readwrite'),
         name="Test Sheet for Sharing")
     yield sheet
@@ -33,7 +33,7 @@ def sheet(request)
     # For clean up we should delete the sheet
     # TODO: Make delete_sheet a test helper - we may want to make this
     #   functionality available via a SpreadsheetCollection module
-    delete_sheet(credentials_file, sheet.id)
+    pygooglesheets.collection.delete(credentials_file, sheet.id)
 
 class TestFeatureSpecsSharingSheet:
 
