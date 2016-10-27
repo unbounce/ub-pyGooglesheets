@@ -33,8 +33,8 @@ class TestConnection:
             connection = pygooglesheets.Connection(credentials=credentials_file,
                                                    permissions="readonly")
             pos_args, keyword_args = mock_google_service_account.from_json_keyfile_name.call_args
-            assert(pos_args == (credentials_file,))
-            assert(keyword_args == {'scopes':'https://www.googleapis.com/auth/spreadsheets.readonly'})
+            assert pos_args == (credentials_file,)
+            assert keyword_args == {'scopes':'https://www.googleapis.com/auth/spreadsheets.readonly'}
 
         def test_it_returns_an_http_object(self,
                                            mocker,
@@ -42,4 +42,4 @@ class TestConnection:
                                            credentials_file):
             connection = pygooglesheets.Connection(credentials=credentials_file,
                                                    permissions="readonly")
-            assert(isinstance(connection, httplib2.Http))
+            assert isinstance(connection, httplib2.Http)

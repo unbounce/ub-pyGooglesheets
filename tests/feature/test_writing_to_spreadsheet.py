@@ -6,8 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 from apiclient import discovery
 import httplib2
 
-
 def read_from_sheet(sheet_id, range, credentials):
+    __tracebackhide__ = True
     SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         credentials, scopes=SCOPES)
@@ -52,10 +52,10 @@ class TestFeatureSpecs:
         spreadsheet.update(connection, range, empty_data)
 
         result = read_from_sheet(spreadsheet.id, range, credentials)
-        assert(result.get('values') is None)
+        assert result.get('values') is None
 
         spreadsheet.update(connection, "A1:C3", data)
         result = read_from_sheet(spreadsheet.id, range, credentials)
 
         expected = map(lambda row: [str(x) for x in row], data)
-        assert(result.get('values') == expected)
+        assert result.get('values') == expected

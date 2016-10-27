@@ -1,11 +1,10 @@
 from apiclient import discovery
 import types
 
-class Spreadsheet:
+class Spreadsheet(object):
 
     def __init__(self, id):
         self.id = id
-
 
     def update(self, connection, range, data):
         service_url = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
