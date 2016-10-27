@@ -8,6 +8,7 @@ import httplib2
 
 
 def list_sheets(credentials):
+    __tracebackhide__ = True
     SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         credentials, scopes=SCOPES)
@@ -17,6 +18,7 @@ def list_sheets(credentials):
     return result
 
 def delete_file(credentials, file_id):
+    __tracebackhide__ = True
     SCOPES = 'https://www.googleapis.com/auth/drive'
     c = ServiceAccountCredentials.from_json_keyfile_name(
         credentials, scopes=SCOPES)
@@ -38,7 +40,7 @@ def files(request):
     new_files = list_sheets(credentials).get('files')
     # This is a little sketchy because there may be race conditions... not sure
     # how else to handle
-    files_to_remove = [ f for f in new_files if f['name'] == expected_name ] #and f['id'] not in original_ids ]
+    files_to_remove = [ f for f in new_files if f['name'] == expected_name and f['id'] not in original_ids ]
     for f in files_to_remove:
         delete_file(credentials, f['id'])
 
@@ -60,11 +62,11 @@ class TestFeatureSpecs:
 
         starting_files = files
         count_files_matching_expected_name = len([f for f in starting_files if f['name'] == expected_name])
-        assert(count_files_matching_expected_name == 0 )
+        assert count_files_matching_expected_name == 0
 
         spreadsheet = pygooglesheets.collection.create(connection=connection, name=expected_name)
         result = list_sheets(credentials)
         count_files_matching_expected_name = len([f for f in result.get('files') if f['name'] == expected_name])
-        assert(count_files_matching_expected_name == 1)
+        assert count_files_matching_expected_name == 1
 
         delete_file(credentials, spreadsheet.id)

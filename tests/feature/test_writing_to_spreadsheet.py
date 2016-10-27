@@ -52,10 +52,10 @@ class TestFeatureSpecs:
         spreadsheet.update(connection, range, empty_data)
 
         result = read_from_sheet(spreadsheet.id, range, credentials)
-        assert(result.get('values') is None)
+        assert result.get('values') is None
 
         spreadsheet.update(connection, "A1:C3", data)
         result = read_from_sheet(spreadsheet.id, range, credentials)
 
         expected = map(lambda row: [str(x) for x in row], data)
-        assert(result.get('values') == expected)
+        assert result.get('values') == expected
