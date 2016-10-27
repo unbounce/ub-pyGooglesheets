@@ -3,8 +3,6 @@ from apiclient import discovery
 
 
 def create(connection, name, sheets=[], locale='en_US'):
-    """Create a new spreadsheet from the details passed in"""
-
     service_url = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
     service = discovery.build('sheets', 'v4', http=connection,
         discoveryServiceUrl=service_url)
