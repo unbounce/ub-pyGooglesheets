@@ -34,9 +34,9 @@ setup(name='pygooglesheets',
       license='MIT',
       packages=['pygooglesheets'],
       install_requires=[
-          'google-api-python-client',
+          'google-api-python-client==1.5.3',
           'httplib2',
-          'oauth2client'
+          'oauth2client==3.0.0'
       ],
       cmdclass = { 'test': PyTestModels, 'testall': PyTestAll },
       tests_require=['pytest', 'pytest-mock'],
